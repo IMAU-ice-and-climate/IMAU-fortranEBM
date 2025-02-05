@@ -1,0 +1,1 @@
+./ebmmodel.sc -aws ant_aws18n

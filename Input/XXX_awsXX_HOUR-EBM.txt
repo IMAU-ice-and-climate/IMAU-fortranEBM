@@ -1,0 +1,1 @@
+Date Hour Day WS Sin Sout Lin Lout T q P ralbedo zenith Serie precip zt zm z0m AWSid Err
