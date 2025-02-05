@@ -1,0 +1,17 @@
+# Output data
+output/*
+input/*
+
+# Large I/O files
+*global.txt
+*ebm.txt
+*EBM.txt
+
+*.dbf
+*.prj
+*.shp
+*.shx
+*.cpg
+*.qpj
+*.tif
+*.png
