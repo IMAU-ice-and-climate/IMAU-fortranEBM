@@ -59,7 +59,7 @@ Now, run the SEB model by running the run script:
 ```bash
 ./ebmmodel.sc -aws aws_antid
 ```
-You can change the name of the station (aws_ant14).
+You can change the name of the station (aws_antid).
 This script compiles the code and runs the code for station the mentioned station.
 other options are
 -m : only compile the code
@@ -133,7 +133,7 @@ real	0m15.995s
 user	0m15.617s
 sys	0m0.144s
 total elapsed time
-move output to /..../seb-model-fortran/Scripts/../Output/ant_aws14//
+move output to /..../seb-model-fortran/Scripts/../Output/ant_awsid//
  model run finished  0
  script run finished
 ```
@@ -147,7 +147,7 @@ seb-model_fortran-main
 │   │   ├── ant_awsid_ebm.py
 │   │   ├── ant_awsid_HOUR-EBM.txt
 ├── Output
-│   ├── ant_aws14
+│   ├── ant_awsid
 │   │   ├── ant_awsid_INFO.txt
 │   │   ├── ant_awsid_AWS.txt
 │   │   ├── ant_awsid_DAY.txt
