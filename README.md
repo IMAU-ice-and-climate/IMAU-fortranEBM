@@ -17,12 +17,12 @@ cd INSTALLDIR
 * For developpers (using git), clone the repository.
   In the terminal, run:
   ```bash
-  git clone https://github.com/chreijmer/seb-model_fortran.git
+  git clone https://github.com/IMAU-ice-and-climate/IMAU-fortranEBM.git
   ```
 
-* For users, download the [.zip file](https://github.com/chreijmer/seb-model_fortran/archive/refs/heads/main.zip) and unzip in _INSTALLDIR_:
+* For users, download the [.zip file](https://github.com/IMAU-ice-and-climate/IMAU-fortranEBM/archive/refs/heads/main.zip) and unzip in _INSTALLDIR_:
   ```bash
-  wget "https://github.com/chreijmer/seb-model_fortran/archive/refs/heads/main.zip"
+  wget "https://github.com/IMAU-ice-and-climate/IMAU-fortranEBM/archive/refs/heads/main.zip"
   ```
 
 ### Preparing forcing and parameter files
