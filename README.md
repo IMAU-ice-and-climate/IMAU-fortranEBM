@@ -2,7 +2,7 @@
 **The IMAU fortran SEB model for snow and ice**
 The fortran version of the IMAU surface energy balance model for snow or ice
 
-![alt text](Fig1_SEBmodel.png)
+![alt text](Fig_SEBmodel.png)
 
 ### Fortran installation
 Install a fortran compiler, e.g. Gfortran, part of the gnu compiler collection (gcc). 
