@@ -1,41 +1,45 @@
 1				lcomment , Logical 1 = yes or 0 = no comments to screen
 2				lerrorgap, jump over data gaps = 0 or interpolate = 1 or interpolate and use all data for averaging = 2 (errorflag)
-0				lmc, disturb measurements with random errors
+0				lmc, disturb measurements with random errors 
+0				lhourlysnowout, write snow characteristics every [0] day or [1] hour, default is 0 because it slows down enormously, use only when hourly values are needed for evaluation
 2009			ibyear , Year at beginning of calculations
-2016			ilyear , Year at end of calculations 
+2015			ilyear , Year at end of calculations 
 120				tstep , [s] Time step, choose small enough to keep subsurface calculations stable
-130.	290.	mbsumdy, mbwindy [dy] Day of year on which mb summer and winter start, mbwindy equals end mb year , on mbwindy snow (id1) is set to firn (id2), and firn increases +1
+300.	90.		mbsumdy, mbwindy [dy] Day of year on which mb summer and winter start, mbwindy equals end mb year , on mbwindy snow (id1) is set to firn (id2), and firn increases +1
 0.04			dz0 , [m] Size of uppermost grid cell
 2.0				dzdeep , [m] Size of lowermost grid cell
 25.0			zdeep , [m] Depth of grid
-900.	500.	densice,densfirn [kg/m3] ice , firn density
-400.	400.	0		rhosn , rhosnprec , trhoprec [kg/m3] Density of initial snow pack and fresh snowfall and type of determination of snow fall density 0 = constant, 1 is f(ws,t) (in case 1, rhosnprec is used as lower limit)
-4				tpcond , Type of effective conductivity equation 1 = Von Dussen, 2 = Sturm, 3=Douville, 4=Jansson, 5=Anderson, 6=Ostin&Anderson, 7=Arthern, 8=Cox
--99				T10m , [¡C] Measured 10 m snow temperature -11.2
-9.99	0.0		dsnow, dfirn , [m] Thickness of snow layer (1 year), Thickness of firn layer, (if ice deeper than zdeep, set to zdeep), at start or on 1 Jan. from acc in m over ice/firn surface
+900.	500.	830.	densice,densfirn, densclosure [kg/m3] ice , firn density, closure density for bucket model to stop downward transport
+300.	250.	1		rhosn , rhosnprec , trhoprec [kg/m3] Density of initial snow pack and fresh snowfall and type of determination of snow fall density 0 = constant, 1 is f(ws,t) (in case 1, rhosnprec is used as lower limit)
+1				ltempprec, logical set temperature of precepitation, 0 = surface temperature, 1 = air temperature, 2 = calculated
+5				tpcond , Type of effective conductivity equation 1 = Von Dussen, 2 = Sturm, 3=Douville, 4=Jansson, 5=Anderson, 6=Ostin&Anderson, 7=Cox
+-10.8			T10m , [Â¡C] Measured 10 m snow temperature -11.2
+1.0	25.0		dsnow, dfirn , [m] Thickness of snow layer (1 year), Thickness of firn layer, (if ice deeper than zdeep, set to zdeep), at start or on 1 Jan. from acc in m over ice/firn surface
 2				luseacc, [-] use sonic data for: 0= not at all, 1=only for evaluation of ice melt and accumulation, 2= 1 + restrict accum based on precip with measured sonic altim.
-6				tpdens , Type of densification routine 0 = density profile reset after each time step, 1 = no dry densification, 2 = Herron and Langway 1980, 3 = Li and Zwally 2004, 4 = Li and Zwally plus vapor transport, 5 = Helsen 2008, 6 = Arthern 2010, 7 = Ligtenberg 2011
+7	1			tpdens, lrefr, Type of densification routine, lrefr:1/0 yes/no refreezing, (tpdens: 0 = no densification, 1 = Herron and Langway 1980, 2 = Li and Zwally 2004, 3 = Li and Zwally plus vapor transport, 4 = Helsen 2008, 5 = Arthern 2010, 6 = Ligtenberg 2011, -1 = no dry densification, density profile reset after each time step, snow height folows observations)
 3	0.02		tpirre, cirre, Type of irreducible water content routine 0 = no water percolation, 1 = constant value cirre (fraction), 2 = Coleou and Lesaffre 1998, 3 = Schneider and Jansson 2004
 0				lslush, yes (1) or no (0) slush formation possible based on Zuo and Oerlemans 1996.
-6.	0.05	20.	2.	10.		surfangle, tausteep, tauhor,tau1,slfact, parameters in slush formation routine resp: surface angle, runoff time scale of steep slopes > 5, runoff time scale od horizontal slopes, runoff time scales on 1deg slopes, factor difference between surface runoff and within snowpack, 
-9.99				accyear, [m w.e.] Annual average accumulation for densification calculation
-1	0.0005	0.05	lz0m, zll, zul, 'Switch roughness length for momentum from file (0), set below (1) or in case of snow a random value between zll and zul (2)'
+8.	0.05	20.	2.	10.		surfangle, tausteep, tauhor,tau1,slfact, parameters in slush formation routine resp: surface angle, runoff time scale of steep slopes > 5, runoff time scale od horizontal slopes, runoff time scales on 1deg slopes, factor difference between surface runoff and within snowpack, 
+0.42			accyear, [m w.e.] Annual average accumulation for densification calculation
+1	0.00005	0.05  0.  0.	lz0m, zll, zul, Hmax, Hmax_month Switch roughness length for momentum from file (0), set below (1) or a random value between zll and zul (2) or ice (3),or parameterized using Hmax based on Van Tiggelen et al (2021) (4)
 0.0001 0.00075	z0msn, z0mice , [m], Roughness length for momentum values for snow and ice resp in case lz0m = 1. For heat and moisture Andreas is used.
+1				lz0h, lz0h Switch roughness length for heat and moisture, 0.1*z0m (0), using Andreas 1987 parameterization (1), using Smeets and van den Broeke 2008 parameterization (2) or using Van Tiggelen et al (2021) parameterization (3). For smooth surfaces (z0m < 1mm) and lz0m > 0 Andreas 1987 is used.
 4				tcalc, formulation calculation surface temperature 1 = from Lout observations, 2 = equal to temp uppermost layer, 3 = extrapolated from upper most layers, 4 = skin layer formulation
 2				extrapolation, extrapolation to surface temp 1 = based on only upper layer, 2 = based on upper 2 layers
 1				lsnet , [-] , switch calculate Snet from Sin and Sout (0), or calculate Snet and Sin based on Sout and running mean albedo (1) 
-0.30	0.90	albmin, albmax, minimum, maximum albedo, used to set error values to and prevent unrealistic values
+0.70	0.95	albmin, albmax, minimum, maximum albedo, used to set error values to and prevent unrealistic values
 1.0				emis, Emissivity of the snow/ice surface 
-0	0			lalbedo,solzenyes, albedo from 0 = observations, or parameterised: 1 = Oerlemans and Knap, 1998, 2 = Bougamont et al., 2005 3 = Douville et al, 1995, yes(1) or no(0) correction on albedo for zenith angle
-0.90	0.275	0.5			albsnow,albice,albfirn, albedo snow, albedo ice, albedo firn/old snow (used by lalbedo options 1, 2, 3)
-11.0	21.9	40.	2000.		snowstar,tstarwet,tstardry0,tstardry10; characteristic depth scale snow (mm w.e.)(used by lalbedo options 1, 2, 3), time scales (days) of decay for wet snow (used by lalbedo options 1, 2), dry surface at 0C(used by lalbedo option 2), dry surface at -10C (used by lalbedo option 2), respectively
+5	0	60	0.001	lalbedo,solzenyes, SSAfresh, radrefr, albedo from 0 = observations,  or parameterised: 1 = Oerlemans and Knap (1998), 2 = Bougamont et al. (2005), 3 = Douville et al. (1995), 4 = Kuipers Munneke et al. (2011), yes(1) or no(0) correction on albedo for zenith angle, fresh snow specific surface area and refrozen snow grain radius (for lalbedo option 4)
+0.95	0.17  0.78 0.0		albsnow,albice,albfirn,soot, albedo snow, albedo ice, albedo firn/old snow (used by lalbedo options 1, 2, 3), soot concentration in ppmw (used by lalbedo option 4)
+2.7	 0.5	 0.5	 13.7	snowstar,tstarwet,tstardry0,tstardry10; characteristic depth scale snow (mm w.e.)(used by lalbedo options 1, 2, 3), time scales (days) of decay for wet snow (used by lalbedo options 1, 2), dry surface at 0C(used by lalbedo option 2), dry surface at -10C (used by lalbedo option 2), respectively
 0				penetration, radiation penetration 0 = off, 1 = on
+0.004, 7.0		dzrad,zradmax, skin layer thickness for radiation penetration calculation, max depth of radiation penetration
 1.0E-4	2.5e-3	radiussn, radiusice radius of snow/ice particles for radiation penetration routine
 0				lwcloud, cloud cover from lwin (1) or not (0), if not then set to 0.
-100.0   0.0  0.0	! lwmax, polynomial to describe upper limit of lwin as function of temperature (C), corresponding to max cloud cover
-100.0   0.0  0.0	! lwmin, polynomial to describe lower limit of lwin as function of temperature (C), corresponding to min cloud 
+317.75947     3.64606     0.00188	! lwmax, polynomial to describe upper limit of lwin as function of temperature (C), corresponding to max cloud cover
+234.69113     3.23162     0.01890	! lwmin, polynomial to describe lower limit of lwin as function of temperature (C), corresponding to min cloud 
 0.05 0.1 0.2 0.4 0.8		depthin, [m] depth of snow temperature sensors at start simulation for validation purposes
-0	1.			lclimtemp,climtemp, logical yes (1) or no (0) climate sensitivity test temperature change in K
-0	10.			lclimprec,climprec, logical yes (1) or no (0) climate sensitivity test precipitation change in %
-0	5.			lclimrad,climrad, logical yes (1) or no (0) climate sensitivity test shortwave radiatio change in %
+0	1.			lclimtemp,climtemp, logical yes (1) or no (2) climate sensitivity test temperature change in K
+0	10.			lclimprec,climprec, logical yes (1) or no (2) climate sensitivity test precipitation change in %
+0	5.			lclimrad,climrad, logical yes (1) or no (2) climate sensitivity test shortwave radiatio change in %
 0	5.			lclimws,climws, logical yes (1) or no (0) climate sensitivity test wind speed change in %
