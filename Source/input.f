@@ -76,10 +76,10 @@ WRITE(uo1,*) dsnow,dfirn,' Thickness of snow/firn layer on top of glacier ice in
 READ(ui,*) luseacc		! use sonic data for: 0= not at all, 1=only for evaluation of ice melt and accumulation, 2= 1 + restrict accum based on precip with measured sonic altim.
 WRITE(uo1,*) luseacc, 'use sonic data for: 0 = not at all, 1 =only for evaluation of ice melt and accumulation, '//&
 &                     '2 = 1 + restrict accum based on precip with measured sonic altim.'
-READ(ui,*) tpdens, lrefr	!Type of densification routine, lrefr:1/0 yes/no refreezing, (tpdens: 0 = no densification, 1 = Herron and Langway 1980, 2 = Li and Zwally 2004, 3 = Li and Zwally plus vapor transport, 4 = Helsen 2008, 5 = Arthern 2010, 6 = Ligtenberg 2011, -1 = no dry densification, density profile reset after each time step, snow height folows observations)
+READ(ui,*) tpdens, lrefr	!Type of densification routine, lrefr:1/0 yes/no refreezing, (tpdens: 0 = no densification, 2 = Herron and Langway 1980, 3 = Li and Zwally 2004, 4 = Li and Zwally plus vapor transport, 5 = Helsen 2008, 6 = Arthern 2010, 7 = Ligtenberg 2011, -1 = no dry densification, density profile reset after each time step, snow height folows observations)
 WRITE(uo1,*) tpdens, lrefr, ' Type of densification routine, lrefr:1/0 yes/no refreezing, (tpdens: 0 = no densification, '//&
-&					        '1 = Herron and Langway 1980, 2 = Li and Zwally 2004, 3 = Li and Zwally plus vapor transport, '//&
-&					        '4 = Helsen 2008, 5 = Arthern 2010, 6 = Ligtenberg 2011, -1 = no dry densification, density '//&
+&					        '2 = Herron and Langway 1980, 3 = Li and Zwally 2004, 4 = Li and Zwally plus vapor transport, '//&
+&					        '5 = Helsen 2008, 6 = Arthern 2010, 7 = Ligtenberg 2011, -1 = no dry densification, density '//&
 &					        'profile reset after each time step, snow height folows observations)'
 READ(ui,*) tpirre,cirre	!Type of irreducible water content routine 0 = no water percolation, 1 = constant value cirre, 2 = Coleou and Lesaffre 1998, 3 = Schneider and Jansson 2004
 WRITE(uo1,*) tpirre,cirre,'Type of irreducible water content routine 0 = no water in de snow, 1 = constant value cirre, '//&
