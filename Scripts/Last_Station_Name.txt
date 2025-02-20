@@ -1,1 +1,1 @@
-ant_aws18n
+ant_awsid

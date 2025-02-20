@@ -29,7 +29,7 @@ cd INSTALLDIR
 ### Preparing forcing and parameter files
 Make sure that the directory structure is the following:
 ```
-seb-model_fortran-main
+seb-model_fortran
 ├── Input
 │   ├── ant_awsid
 │   │   ├── ant_awsid_ebm.txt
@@ -52,19 +52,24 @@ Make sure that the output directory exists.
 Go to the scripts directory in the sebmodel directory
 
 ```bash
-cd seb-model_fortran-main/
+cd seb-model_fortran/
 cd Scripts/
 ```
 
 Now, run the SEB model by running the run script:
 ```bash
-./ebmmodel.sc -aws aws_antid
+./ebmmodel.sc -aws ant_awsid
 ```
 You can change the name of the station (aws_antid).
 This script compiles the code and runs the code for station the mentioned station.
 other options are
 -m : only compile the code
 -e exp : extra option to define different experiments. When set the output is stored in Output/station/exp/
+
+If you get a permission error, run:
+```bash
+chmod a+rx ebmmodel.sc
+```
 
 If everything works, you should see the something like:
 
@@ -142,7 +147,7 @@ move output to /..../seb-model-fortran/Scripts/../Output/ant_awsid//
 The output files are written in the 'output' folder:
 
 ```
-seb-model_fortran-main
+seb-model_fortran
 ├── Input
 │   ├── ant_awsid
 │   │   ├── ant_awsid_ebm.py

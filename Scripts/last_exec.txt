@@ -1,1 +1,1 @@
-./ebmmodel.sc -aws ant_aws18n
+./ebmmodel.sc -aws ant_awsid
